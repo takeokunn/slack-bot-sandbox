@@ -16,7 +16,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.post('/webhook', async (req, res) => {
     // const res = await web.chat.postMessage({ channel: conversationId, text: 'Hello there' });
-    await res.status(200).json();
+    await res.send("hello world").status(200);
 });
 
 const port = process.env.PORT || 3000;
