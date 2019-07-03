@@ -24,7 +24,10 @@ const handleTakebot = channel_id => postMessage(channel_id, "test");
 
 const handleBusinesh = (before_text, channel_id) => {
     businesh.translate(before_text)
-        .then(res => postMessage(channel_id, res));
+        .then(res => postMessage(channel_id, `
+before: ${before_text}
+after: ${res}
+`));
 };
 
 
