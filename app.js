@@ -48,6 +48,5 @@ app.post('/webhook', async (req, res) => {
     await res.status(200).send('good');
 });
 
-
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Node app is running at localhost: ${port}`));
