@@ -28,7 +28,7 @@ const fetchStockPrice = async () => {
     return price;
 };
 
-const fetchDocabse = async query => {
+const fetchDocbase = async query => {
     const url = await `https://api.docbase.io/teams/${config.docbase_team}/posts?q=${query}&per_page=5`;
     const headers = {
         headers: {
@@ -64,7 +64,7 @@ const handleStocks = async channel_id => {
 };
 
 const handleDocbase = async (channel_id, query) => {
-    const items = await fetchDocabse(query);
+    const items = await fetchDocbase(query);
     const text = await items.posts.reduce((accum, item) => {
         return `
 ${accum}
