@@ -40,8 +40,6 @@ const fetchDocbase = async query => {
     return await res.data;
 };
 
-fetchDocbase("旅行");
-
 const postMessage = (channel_id, text) => {
     slack.chat.postMessage({
         token: config.slack_token,
