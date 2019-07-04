@@ -2,6 +2,7 @@ const slack = require('slack');
 const dotenv = require('dotenv');
 const express = require('express');
 const businesh = require('businesh');
+const puppeteer = require('puppeteer');
 const bodyParser = require('body-parser');
 
 dotenv.config();
@@ -10,6 +11,18 @@ const app = express();
 const config = {
     slack_token: process.env.SLACK_TOKEN,
     slack_verify_token: process.env.SLACK_VERIFY_TOKEN
+};
+
+const fetchStockPrice = async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('https://minkabu.jp/stock/3990');
+    await page.waitFor(".stock_price");
+    const elem = await page.$(".stock_price");
+    const text = await page.evaluate(element => element.textContent, elem);
+    const price = await text.replace(/\n/g, '').replace(/ /g, '');
+    await browser.close();
+    return price;
 };
 
 const postMessage = (channel_id, text) => {
@@ -30,6 +43,10 @@ after: ${res}
 `));
 };
 
+const handleStocks = async (channel_id) => {
+    const price = await fetchStockPrice();
+    postMessage(channel_id, `現在のUUUM株価: ${price}`);
+};
 
 app.use(bodyParser());
 
@@ -41,11 +58,14 @@ app.post('/webhook', async (req, res) => {
     const command = await req.body.command;
     const channel_id = await req.body.channel_id;
     switch(command) {
-    case 'takebot':
+    case '/takebot':
         await handleTakebot(channel_id);
         break;
     case '/businesh':
         await handleBusinesh(text, channel_id);
+        break;
+    case '/stocks':
+        await handleStocks(channel_id);
         break;
     }
     await res.status(200).send('good');
