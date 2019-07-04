@@ -1,3 +1,4 @@
+const axios = require('axios');
 const slack = require('slack');
 const dotenv = require('dotenv');
 const express = require('express');
@@ -10,16 +11,13 @@ dotenv.config();
 const app = express();
 const config = {
     slack_token: process.env.SLACK_TOKEN,
-    slack_verify_token: process.env.SLACK_VERIFY_TOKEN
+    slack_verify_token: process.env.SLACK_VERIFY_TOKEN,
+    docbase_token: process.env.DOCBASE_TOKEN,
+    docbase_team: process.env.DOCBASE_TEAM_NAME
 };
 
 const fetchStockPrice = async () => {
-    const browser = await puppeteer.launch({
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-        ]
-    });
+    const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto('https://minkabu.jp/stock/3990');
     await page.waitFor(".stock_price");
@@ -28,6 +26,18 @@ const fetchStockPrice = async () => {
     const price = await text.replace(/\n/g, '').replace(/ /g, '');
     await browser.close();
     return price;
+};
+
+const fetchDocabse = async query => {
+    const url = await `https://api.docbase.io/teams/${config.docbase_team}/posts?q=${query}`;
+    const headers = {
+        headers: {
+            "Content-Type": "application/json",
+            "X-DocBaseToken": config.docbase_token
+        }
+    };
+    const res = await axios.get(url, headers);
+    return await res.data;
 };
 
 const postMessage = (channel_id, text) => {
@@ -48,12 +58,20 @@ after: ${res}
 `));
 };
 
-const handleStocks = async (channel_id) => {
+const handleStocks = async channel_id => {
     const price = await fetchStockPrice();
-    postMessage(channel_id, `
-現在のUUUM株価: ${price}
-山口さんの資産: n円
-`);
+    postMessage(channel_id, `現在のUUUM株価: ${price}`);
+};
+
+const handleDocbase = async (channel_id, text) => {
+    const posts = await fetchDocabse(text);
+    const text = await posts.map(post => {
+return `
+記事: ${post.title}
+URL: ${post.url}
+`;
+});
+    await postMessage(channel_id, text);
 };
 
 app.use(bodyParser());
@@ -74,6 +92,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/stocks':
         handleStocks(channel_id);
+        break;
+    case '/docbase':
+        handleDocbase(channel_id, text);
         break;
     }
     await res.status(200).send('good');
