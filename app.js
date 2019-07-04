@@ -84,10 +84,6 @@ app.post('/webhook', async (req, res) => {
     const command = await req.body.command;
     const channel_id = await req.body.channel_id;
 
-
-    // validation
-    if (token !== config.slack_verify_token) return;
-
     switch(command) {
     case '/takebot':
         handleTakebot(channel_id);
