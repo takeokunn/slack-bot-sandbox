@@ -45,7 +45,10 @@ after: ${res}
 
 const handleStocks = async (channel_id) => {
     const price = await fetchStockPrice();
-    postMessage(channel_id, `現在のUUUM株価: ${price}`);
+    postMessage(channel_id, `
+現在のUUUM株価: ${price}
+山口さんの資産: n円
+`);
 };
 
 app.use(bodyParser());
