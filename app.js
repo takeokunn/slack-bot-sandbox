@@ -63,10 +63,10 @@ const handleStocks = async channel_id => {
     postMessage(channel_id, `現在のUUUM株価: ${price}`);
 };
 
-const handleDocbase = async (channel_id, text) => {
-    const posts = await fetchDocabse(text);
+const handleDocbase = async (channel_id, query) => {
+    const posts = await fetchDocabse(query);
     const text = await posts.map(post => {
-return `
+        return `
 記事: ${post.title}
 URL: ${post.url}
 `;
@@ -83,6 +83,11 @@ app.post('/webhook', async (req, res) => {
     const token = await req.body.token;
     const command = await req.body.command;
     const channel_id = await req.body.channel_id;
+
+
+    // validation
+    if (token !== config.slack_verify_token) return;
+
     switch(command) {
     case '/takebot':
         handleTakebot(channel_id);
