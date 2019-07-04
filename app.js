@@ -67,13 +67,13 @@ app.post('/webhook', async (req, res) => {
     const channel_id = await req.body.channel_id;
     switch(command) {
     case '/takebot':
-        await handleTakebot(channel_id);
+        handleTakebot(channel_id);
         break;
     case '/businesh':
-        await handleBusinesh(text, channel_id);
+        handleBusinesh(text, channel_id);
         break;
     case '/stocks':
-        await handleStocks(channel_id);
+        handleStocks(channel_id);
         break;
     }
     await res.status(200).send('good');
