@@ -64,13 +64,14 @@ const handleStocks = async channel_id => {
 };
 
 const handleDocbase = async (channel_id, query) => {
-    const posts = await fetchDocabse(query);
-    const text = await posts.map(post => {
+    const items = await fetchDocabse(query);
+    const text = await items.posts.reduce((accum, item) => {
         return `
-記事: ${post.title}
-URL: ${post.url}
+${accum}
+記事: ${item.title}
+URL: ${item.url}
 `;
-});
+    }, "");
     await postMessage(channel_id, text);
 };
 
