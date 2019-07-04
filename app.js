@@ -81,7 +81,6 @@ app.get('/', (_, res) => res.send('Hello World!'));
 
 app.post('/webhook', async (req, res) => {
     const text = await req.body.text;
-    const token = await req.body.token;
     const command = await req.body.command;
     const channel_id = await req.body.channel_id;
 
