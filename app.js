@@ -29,7 +29,7 @@ const fetchStockPrice = async () => {
 };
 
 const fetchDocabse = async query => {
-    const url = await `https://api.docbase.io/teams/${config.docbase_team}/posts?q=${query}`;
+    const url = await `https://api.docbase.io/teams/${config.docbase_team}/posts?q=${query}&per_page=5`;
     const headers = {
         headers: {
             "Content-Type": "application/json",
