@@ -71,7 +71,7 @@ ${accum}
 記事: ${item.title}
 URL: ${item.url}
 `;
-    }, "");
+    }, `検索: ${query}`);
     await postMessage(channel_id, text);
 };
 
