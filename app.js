@@ -29,7 +29,7 @@ const fetchStockPrice = async () => {
 };
 
 const fetchDocbase = async query => {
-    const url = await `https://api.docbase.io/teams/${config.docbase_team}/posts?q=${query}&per_page=5`;
+    const url = await `https://api.docbase.io/teams/${config.docbase_team}/posts?q=${encodeURI(query)}&per_page=5`;
     const headers = {
         headers: {
             "Content-Type": "application/json",
@@ -39,6 +39,8 @@ const fetchDocbase = async query => {
     const res = await axios.get(url, headers);
     return await res.data;
 };
+
+fetchDocbase("旅行");
 
 const postMessage = (channel_id, text) => {
     slack.chat.postMessage({
