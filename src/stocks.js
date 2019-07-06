@@ -15,7 +15,7 @@ const fetchStockPrice = async () => {
 
 const handleStocks = async channel_id => {
     const price = await fetchStockPrice();
-    postMessage(channel_id, `現在のUUUM株価: ${price}`);
+    await postMessage(channel_id, `現在のUUUM株価: ${price}`);
 };
 
 module.exports = handleStocks;
