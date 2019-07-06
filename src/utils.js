@@ -13,4 +13,4 @@ const postMessage = (channel_id, text) => {
     });
 };
 
-export { postMessage, validateVerifyToken };
+module.exports = { postMessage, validateVerifyToken };

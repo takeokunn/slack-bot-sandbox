@@ -9,4 +9,4 @@ after: ${res}
 `));
 };
 
-export default handleBusinesh;
+module.exports = handleBusinesh;

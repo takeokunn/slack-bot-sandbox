@@ -18,4 +18,4 @@ const handleStocks = async channel_id => {
     postMessage(channel_id, `現在のUUUM株価: ${price}`);
 };
 
-export default handleStocks;
+module.exports = handleStocks;

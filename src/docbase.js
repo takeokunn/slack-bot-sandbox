@@ -28,4 +28,4 @@ URL: ${item.url}
 };
 
 
-export default handleDocbase;
+module.exports = handleDocbase;

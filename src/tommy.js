@@ -7,4 +7,4 @@ const handleTommy = async channel_id => {
     await postMessage(channel_id, text);
 };
 
-export default handleTommy;
+module.exports = handleTommy;
