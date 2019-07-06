@@ -6,6 +6,8 @@ const businesh = require('businesh');
 const puppeteer = require('puppeteer');
 const bodyParser = require('body-parser');
 
+const tommyData = require('./assets/tommy.json');
+
 dotenv.config();
 
 const app = express();
@@ -75,6 +77,12 @@ URL: ${item.url}
     await postMessage(channel_id, text);
 };
 
+const handleTommy = async channel_id => {
+    const index = await Math.floor(Math.random() * tommyData.words.length);
+    const text =  await tommyData.words[index];
+    await postMessage(channel_id, text);
+};
+
 app.use(bodyParser());
 
 app.get('/', (_, res) => res.send('Hello World!'));
@@ -96,6 +104,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/docbase':
         handleDocbase(channel_id, text);
+        break;
+    case '/tommy':
+        handleTommy(channel_id);
         break;
     }
     await res.status(200).send('good');
