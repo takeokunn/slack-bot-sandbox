@@ -23,7 +23,10 @@ const handleKintone = (text, channel_id) => {
     const auth = handleKintoneAuth();
     const conn = new Connection(domain, auth);
     const record = new Record(conn);
-    const success = data => postMessage(channel_id, data.content.value);
+    const success = data => {
+        const message = "```" + data.content.value + "```";
+        postMessage(channel_id, message)
+    };
     const failure = err => console.log(err.get().errors);
     const query = `Owner in ("${text}") limit 1`;
     fetchSearchLatestRecord(record, app_id, query, success, failure);
