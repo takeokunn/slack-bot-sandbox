@@ -24,7 +24,7 @@ const handleKintone = (text, channel_id) => {
     const conn = new Connection(domain, auth);
     const record = new Record(conn);
     const success = data => {
-        const message = "```" + data.content.value + "```";
+        const message = "```送信者: " + text + data.content.value + "```";
         postMessage(channel_id, message)
     };
     const failure = err => console.log(err.get().errors);
