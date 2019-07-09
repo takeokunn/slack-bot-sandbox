@@ -15,8 +15,8 @@ const handleKintoneAuth = () => {
 
 const fetchSearchLatestRecord = (record, app_id, query, success, failure) => {
     record.getRecords(app_id, query)
-        .then((res) => success(res.records[0]))
-        .catch((err) => failure(err));
+        .then(res => success(res.records[0]))
+        .catch(err => failure(err));
 };
 
 const handleKintone = (text, channel_id) => {
