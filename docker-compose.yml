@@ -3,6 +3,9 @@ services:
   web:
     build: .
     command: npm start
+    volumes:
+      - .:/workspace
+      - /workspace/node_modules
     env_file: .env
     ports:
       - 13000:3000
