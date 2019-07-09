@@ -1,16 +1,16 @@
-const dotenv = require('dotenv');
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const {
     handleBusinesh,
+    handleKintone,
     handleDocbase,
     handleStocks,
     handleTakebot,
     handleTommy
 } = require('./src');
-
-dotenv.config();
 
 const app = express();
 
@@ -27,6 +27,9 @@ app.post('/webhook', async (req, res) => {
     case '/businesh':
         handleBusinesh(text, channel_id);
         break;
+    case '/kintone':
+        handleKintone(text, channel_id);
+        break;
     case '/stocks':
         handleStocks(channel_id);
         break;
@@ -37,7 +40,7 @@ app.post('/webhook', async (req, res) => {
         handleTommy(channel_id);
         break;
     }
-    await res.status(200).send('good');
+    return await res.status(200).send('running...');
 });
 
 const port = process.env.PORT || 3000;

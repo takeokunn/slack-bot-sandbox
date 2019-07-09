@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: npm start
+    env_file: .env
+    ports:
+      - 13000:3000
