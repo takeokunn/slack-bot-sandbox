@@ -20,11 +20,11 @@ const handleInstagram = (channel_id, text) => {
         const message = `\`\`\`
 instagram
 
-id       : ${id}
-名前      : ${username}
-bio      : ${biography}
-follow   : ${follow}
-follower : ${followed}
+id: ${id}
+name: ${username}
+bio: ${biography}
+follow: ${follow}人
+follower ${followed}人
 \`\`\``;
         postMessage(channel_id, message);
     };
