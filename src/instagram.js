@@ -25,6 +25,8 @@ name: ${username}
 bio: ${biography}
 follow: ${follow}人
 follower ${followed}人
+
+url: https://www.instagram.com/${text}/
 \`\`\``;
         postMessage(channel_id, message);
     };
