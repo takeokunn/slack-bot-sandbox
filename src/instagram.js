@@ -1,3 +1,4 @@
+const axios = require('axios');
 const { postMessage } = require('./utils');
 
 const fetchDetailByName = (name, success, failure) => {
