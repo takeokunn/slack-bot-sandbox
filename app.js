@@ -7,6 +7,7 @@ const {
     handleBusinesh,
     handleKintone,
     handleDocbase,
+    handleInstagram,
     handleStocks,
     handleTakebot,
     handleTommy
@@ -38,6 +39,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/tommy':
         handleTommy(channel_id);
+        break;
+    case '/instagram':
+        handleInstagram(channel_id, text);
         break;
     }
     return await res.status(200).send('running...');
