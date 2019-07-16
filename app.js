@@ -12,7 +12,8 @@ const {
     handleTakebot,
     handleTommy,
     handleNuko,
-    handleDog
+    handleDog,
+    handleLgtm
 } = require('./src');
 
 const app = express();
@@ -50,6 +51,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/dog':
         handleDog(channel_id);
+        break;
+    case '/lgtm':
+        handleLgtm(channel_id);
         break;
     }
     return await res.status(200).send('running...');
