@@ -10,7 +10,8 @@ const {
     handleInstagram,
     handleStocks,
     handleTakebot,
-    handleTommy
+    handleTommy,
+    handleNuko
 } = require('./src');
 
 const app = express();
@@ -42,6 +43,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/instagram':
         handleInstagram(channel_id, text);
+        break;
+    case '/nuko':
+        handleNuko(channel_id);
         break;
     }
     return await res.status(200).send('running...');

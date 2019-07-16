@@ -7,6 +7,7 @@ const handleInstagram = require('./instagram');
 const handleStocks = require('./stocks');
 const handleTakebot = require('./takebot');
 const handleTommy = require('./tommy');
+const handleNuko = require('./nuko');
 
 module.exports = {
     validateVerifyToken,
@@ -17,4 +18,5 @@ module.exports = {
     handleStocks,
     handleTakebot,
     handleTommy,
+    handleNuko
 };
