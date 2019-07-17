@@ -12,6 +12,7 @@ const handleDog = require('./dog');
 const handleLgtm = require('./lgtm');
 const handleOjichat = require('./ojichat');
 const handleCowsay = require('./cowsay');
+const handleNomlish = require('./nomlish');
 
 module.exports = {
     validateVerifyToken,
@@ -26,5 +27,6 @@ module.exports = {
     handleDog,
     handleLgtm,
     handleOjichat,
-    handleCowsay
+    handleCowsay,
+    handleNomlish
 };

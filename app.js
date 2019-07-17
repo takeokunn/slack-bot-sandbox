@@ -15,7 +15,8 @@ const {
     handleDog,
     handleLgtm,
     handleOjichat,
-    handleCowsay
+    handleCowsay,
+    handleNomlish
 } = require('./src');
 
 const app = express();
@@ -62,6 +63,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/cowsay':
         handleCowsay(channel_id, text);
+        break;
+    case '/nomlish':
+        handleNomlish(channel_id, text);
         break;
     }
     return await res.status(200).send('running...');
