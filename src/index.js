@@ -10,6 +10,7 @@ const handleTommy = require('./tommy');
 const handleNuko = require('./nuko');
 const handleDog = require('./dog');
 const handleLgtm = require('./lgtm');
+const handleOjichat = require('./ojichat');
 
 module.exports = {
     validateVerifyToken,
@@ -22,5 +23,6 @@ module.exports = {
     handleTommy,
     handleNuko,
     handleDog,
-    handleLgtm
+    handleLgtm,
+    handleOjichat
 };
