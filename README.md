@@ -1,5 +1,6 @@
 # slack-bot-sandbox
 
+
 /businesh ... 任意の文字列をビジネッシュ・テキストに変換するライブラリです。
 /cowsay ... cowsay
 /docbase ... 議事録検索
