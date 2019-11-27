@@ -16,7 +16,8 @@ const {
     handleLgtm,
     handleOjichat,
     handleCowsay,
-    handleNomlish
+    handleNomlish,
+    handleGenbaneko
 } = require('./src');
 
 const app = express();
@@ -66,6 +67,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/nomlish':
         handleNomlish(channel_id, text);
+        break;
+    case '/genbaneko':
+        handleGenbaneko(channel_id, text);
         break;
     }
     return await res.status(200).send('running...');
