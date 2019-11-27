@@ -17,7 +17,8 @@ const {
     handleOjichat,
     handleCowsay,
     handleNomlish,
-    handleGenbaneko
+    handleGenbaneko,
+    handleMozy
 } = require('./src');
 
 const app = express();
@@ -70,6 +71,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/genbaneko':
         handleGenbaneko(channel_id, text);
+        break;
+    case '/mozy':
+        handleMozy(channel_id);
         break;
     }
     return await res.status(200).send('running...');
