@@ -43,12 +43,6 @@ const nippo = `
 \`\`\`
 `;
 
-const fetchNuko = async () => {
-    const url = 'https://api.thecatapi.com/v1/images/search';
-    const res = await axios.get(url);
-    return await res.data;
-};
-
 const handleMozy = async channel_id => {
     postMessage(channel_id, nippo);
 };
