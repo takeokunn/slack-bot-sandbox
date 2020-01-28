@@ -11,9 +11,9 @@ const okite = `
 
 ## ステージング環境リリース
 本番ほど気にする必要はないが、大きめの反映はプロダクトチーム内（システムとビジネス側）が把握できるようにする
+\`\`\`
 
 https://uuum.docbase.io/posts/265545
-\`\`\`
 `;
 
 const handleOkite = async channel_id => {
