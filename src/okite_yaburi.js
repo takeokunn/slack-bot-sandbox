@@ -3,7 +3,7 @@ const { postMessage } = require('./utils');
 
 const okite_yaburi = iiwake => {
     return `
-${iiwake}のため、緊急リリースを致します。
+${iiwake}のため、緊急リリース致します。
 しょうがないんです、中橋さん。
 `
 };
