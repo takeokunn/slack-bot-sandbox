@@ -19,7 +19,8 @@ const {
     handleNomlish,
     handleGenbaneko,
     handleMozy,
-    handleOkite
+    handleOkite,
+    handleOkiteYaburi
 } = require('./src');
 
 const app = express();
@@ -78,6 +79,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/okite':
         handleOkite(channel_id);
+        break;
+    case '/okite_yaburi':
+        handleOkiteYaburi(channel_id);
         break;
     }
     return await res.status(200).send('running...');
