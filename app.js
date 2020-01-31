@@ -81,7 +81,7 @@ app.post('/webhook', async (req, res) => {
         handleOkite(channel_id);
         break;
     case '/okite_yaburi':
-        handleOkiteYaburi(channel_id);
+        handleOkiteYaburi(channel_id, text);
         break;
     }
     return await res.status(200).send('running...');
