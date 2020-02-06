@@ -17,6 +17,7 @@ const handleGenbaneko = require('./genbaneko');
 const handleMozy = require('./mozy');
 const handleOkite = require('./okite');
 const handleOkiteYaburi = require('./okite_yaburi');
+const handleXNinja = require('./x-ninja');
 
 module.exports = {
     validateVerifyToken,
@@ -36,5 +37,6 @@ module.exports = {
     handleGenbaneko,
     handleMozy,
     handleOkite,
-    handleOkiteYaburi
+    handleOkiteYaburi,
+    handleXNinja
 };
