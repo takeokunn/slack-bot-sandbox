@@ -9,7 +9,7 @@ ${iiwake}ため、緊急リリース致します。
 };
 
 const handleOkiteYaburi = async (channel_id, text) => {
-    const iiwake = text || "母が急病";
+    const iiwake = text || "母が急病の";
     postMessage(channel_id, okite_yaburi(iiwake));
 };
 
