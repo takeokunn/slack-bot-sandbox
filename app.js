@@ -21,7 +21,8 @@ const {
     handleMozy,
     handleOkite,
     handleOkiteYaburi,
-    handleXNinja
+    handleXNinja,
+    handleDbt
 } = require('./src');
 
 const app = express();
@@ -86,6 +87,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/x-ninja':
         handleXNinja(channel_id);
+        break;
+    case '/dbt':
+        handleDbt(channel_id);
         break;
     }
     return await res.status(200).send('running...');

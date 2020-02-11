@@ -18,6 +18,7 @@ const handleMozy = require('./mozy');
 const handleOkite = require('./okite');
 const handleOkiteYaburi = require('./okite_yaburi');
 const handleXNinja = require('./x-ninja');
+const handleDbt = require('./dbt');
 
 module.exports = {
     validateVerifyToken,
@@ -38,5 +39,6 @@ module.exports = {
     handleMozy,
     handleOkite,
     handleOkiteYaburi,
-    handleXNinja
+    handleXNinja,
+    handleDbt
 };
