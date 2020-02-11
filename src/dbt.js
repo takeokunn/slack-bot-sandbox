@@ -19,7 +19,6 @@ const handleFetchCoupon = auth_token => {
 
 const generateMessage = coupons => {
     return coupons.reduce((accum, coupon) => {
-        console.log(accum);
         return `${accum}
 ------------------------------------------------------------
 商品名: ${coupon.NM_CUP_MENU}
