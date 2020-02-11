@@ -17,27 +17,24 @@ const handleFetchCoupon = auth_token => {
         .then(res => res.data);
 };
 
-
 const generateMessage = coupons => {
-    const message = coupons.reduce((accum, coupon) => {
-        return `
-            ${accum}
-            ------------------------------------------------------------
-            商品名: ${coupon.NM_CUP_MENU}
-            価格: ${coupon.REAL_CUP_PRICE}円 → ${coupon.SALE_CUP_PRICE}円
-            クーポン番号: ${coupon.CD_COUPON}
-        `;
-    })
-    return `\`\`\`
-今日のバーキンクーポン情報
-${message}
-\`\`\``;
+    return coupons.reduce((accum, coupon) => {
+        console.log(accum);
+        return `${accum}
+------------------------------------------------------------
+商品名: ${coupon.NM_CUP_MENU}
+価格: ${coupon.REAL_CUP_PRICE}円 → ${coupon.SALE_CUP_PRICE}円
+クーポン番号: ${coupon.CD_COUPON}`;
+    }, "");
 };
 
 const handleDbt = channel_id => {
     handleFetchCoupon(process.env.BURGER_KING_AUTH_TOKEN)
         .then(data => {
-            const message = generateMessage(data.body.couponList);
+            const message = `\`\`\`
+本日のバーキン情報
+${generateMessage(data.body.couponList)}
+\`\`\``;
             postMessage(channel_id, message)
         });
 };
