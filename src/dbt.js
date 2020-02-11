@@ -20,10 +20,7 @@ const handleFetchCoupon = auth_token => {
 const generateMessage = coupons => {
     return coupons.reduce((accum, coupon) => {
         return `${accum}
-------------------------------------------------------------
-商品名: ${coupon.NM_CUP_MENU}
-価格: ${coupon.REAL_CUP_PRICE}円 → ${coupon.SALE_CUP_PRICE}円
-クーポン番号: ${coupon.CD_COUPON}`;
+【${coupon.CD_COUPON}】${coupon.NM_CUP_MENU}　${coupon.REAL_CUP_PRICE}円 → ${coupon.SALE_CUP_PRICE}円`;
     }, "");
 };
 
@@ -32,6 +29,7 @@ const handleDbt = channel_id => {
         .then(data => {
             const message = `\`\`\`
 本日のバーキン情報
+--------------------------------------------
 ${generateMessage(data.body.couponList)}
 \`\`\``;
             postMessage(channel_id, message)
