@@ -20,7 +20,7 @@ const handleFetchCoupon = auth_token => {
 const generateMessage = coupons => {
     return coupons.reduce((accum, coupon) => {
         return `${accum}
-【${coupon.CD_COUPON}】${coupon.NM_CUP_MENU}　${coupon.REAL_CUP_PRICE}円 → ${coupon.SALE_CUP_PRICE}円`;
+【${coupon.NO_COUPON}】${coupon.NM_CUP_MENU}　${coupon.REAL_CUP_PRICE}円 → ${coupon.SALE_CUP_PRICE}円`;
     }, "");
 };
 
