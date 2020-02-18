@@ -7,16 +7,18 @@ const fetchTiktokData = async (unique_id) => {
     const res = await axios.get(url, { headers: { 'User-Agent': user_agent } });
     const raw = res.data.split('<script id="__NEXT_DATA__" type="application/json" crossorigin="anonymous">')[1].split('</script>')[0];
     const user_data = JSON.parse(raw).props.pageProps.userData;
-    return user_data;
+    const message = `\`\`\`
+${user_data.nickName} @${user_data.uniqueId}
+フォロー: ${user_data.following}
+フォロワー: ${user_data.fans}
+いいね: ${user_data.heart}\`\`\``;
+    return message;
 };
 
 const handleTiktok = async (channel_id, text) => {
-    const user_data = await fetchTiktokData(text);
-    const message = `
-${user_data.nickName}(${user_data.uniqueId})
-フォロー: ${user_data.following}
-フォロワー: ${user_data.fans}
-いいね: ${user_data.heart}`;
+    const unique_ids = text.split(",");
+    const message = unique_ids.map(async id => await fetchTiktokData(text)).reduce((accum, msg) => accum + msg, "");
+
     postMessage(channel_id, message);
 };
 
