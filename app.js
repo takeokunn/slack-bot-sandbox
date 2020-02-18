@@ -22,7 +22,8 @@ const {
     handleOkite,
     handleOkiteYaburi,
     handleXNinja,
-    handleDbt
+    handleDbt,
+    handleTiktok
 } = require('./src');
 
 const app = express();
@@ -90,6 +91,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/dbt':
         handleDbt(channel_id);
+        break;
+    case '/tiktok':
+        handleTiktok(channel_id, text);
         break;
     }
     return await res.status(200).send('running...');
