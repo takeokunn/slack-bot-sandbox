@@ -19,7 +19,7 @@ const handleTiktok = async (channel_id, text) => {
     const unique_ids = await text.split(",");
     const messages = await unique_ids.map(id => fetchTiktokData(id));
     Promise.all(messages).then(values => {
-        const message = values.reduce((accum, msg) => `#{accum}\n#{msg}`, "");
+        const message = values.reduce((accum, msg) => `${accum}\n${msg}`, "");
         postMessage(channel_id, message);
     });
 };
