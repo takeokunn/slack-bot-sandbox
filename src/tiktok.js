@@ -18,7 +18,6 @@ ${user_data.nickName} @${user_data.uniqueId}
 const handleTiktok = async (channel_id, text) => {
     const unique_ids = text.split(",");
     const message = unique_ids.map(async id => await fetchTiktokData(text)).reduce((accum, msg) => accum + msg, "");
-
     postMessage(channel_id, message);
 };
 
