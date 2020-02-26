@@ -23,7 +23,8 @@ const {
     handleOkiteYaburi,
     handleXNinja,
     handleDbt,
-    handleTiktok
+    handleTiktok,
+    handleMidtown
 } = require('./src');
 
 const app = express();
@@ -95,6 +96,8 @@ app.post('/webhook', async (req, res) => {
     case '/tiktok':
         handleTiktok(channel_id, text);
         break;
+    case '/midtown':
+        handleMidtown(channel_id);
     }
     return await res.status(200).send('running...');
 });
