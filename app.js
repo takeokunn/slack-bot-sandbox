@@ -98,6 +98,7 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/midtown':
         handleMidtown(channel_id);
+        break;
     }
     return await res.status(200).send('running...');
 });
