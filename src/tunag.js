@@ -17,7 +17,6 @@ const handleTunag = async (channel_id, text) => {
     const user_feed = feeds.filter(feed => feed.data.user.name === text);
     if (user_feed.length === 0) return;
     const substances = user_feed[0].data.apply.substances;
-    console.log(substances);
     const nippo_text = substances.reduce((accum, substance) => {
         return `${accum}
 ## ${substance.key}
