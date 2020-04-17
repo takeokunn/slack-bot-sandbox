@@ -24,7 +24,10 @@ const handleTunag = async (channel_id, text) => {
 ${substance.value}
 `;
     }, "");
-    const post_text = `\`\`\` ${nippo_text} \`\`\``;
+    const post_text = `\`\`\`
+投稿者: ${user_feed.data.user.name}
+${nippo_text}
+\`\`\``;
     postMessage(channel_id, post_text);
 };
 
