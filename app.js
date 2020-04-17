@@ -24,7 +24,8 @@ const {
     handleXNinja,
     handleDbt,
     handleTiktok,
-    handleMidtown
+    handleMidtown,
+    handleTunag
 } = require('./src');
 
 const app = express();
@@ -99,8 +100,11 @@ app.post('/webhook', async (req, res) => {
     case '/midtown':
         handleMidtown(channel_id);
         break;
+    case '/tunag-nippo':
+        handleTunag(channel_id, text);
+        break;
     }
-    return await res.status(200).send('running...');
+    return res.status(200).send('running...');
 });
 
 const port = process.env.PORT || 3000;

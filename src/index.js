@@ -21,6 +21,7 @@ const handleXNinja = require('./x-ninja');
 const handleDbt = require('./dbt');
 const handleTiktok = require('./tiktok');
 const handleMidtown = require("./midtown");
+const handleTunag = require("./tunag");
 
 module.exports = {
     validateVerifyToken,
@@ -44,5 +45,6 @@ module.exports = {
     handleXNinja,
     handleDbt,
     handleTiktok,
-    handleMidtown
+    handleMidtown,
+    handleTunag
 };
