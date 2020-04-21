@@ -25,7 +25,8 @@ const {
     handleDbt,
     handleTiktok,
     handleMidtown,
-    handleTunag
+    handleTunag,
+    handleGetWild
 } = require('./src');
 
 const app = express();
@@ -102,6 +103,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/tunag-nippo':
         handleTunag(channel_id, text);
+        break;
+    case '/getwild':
+        handleGetWild(channel_id);
         break;
     }
     return res.status(200).send('running...');
