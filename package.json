@@ -15,7 +15,7 @@
         "jsdom": "^16.2.2",
         "node-docbase-sdk": "^0.6.2",
         "nomlish": "^0.1.0",
-        "npm": "^6.14.4",
+        "npm": "^6.14.6",
         "puppeteer": "^1.20.0",
         "request": "^2.88.2",
         "slack": "^11.0.2"
