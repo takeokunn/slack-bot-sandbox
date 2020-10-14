@@ -32,7 +32,7 @@ const handleDbt = channel_id => {
 --------------------------------------------
 ${generateMessage(data.body.couponList)}
 \`\`\``;
-            postMessage(channel_id, message)
+            postMessage(channel_id, message);
         });
 };
 

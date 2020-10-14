@@ -23,6 +23,7 @@ const handleTiktok = require('./tiktok');
 const handleMidtown = require("./midtown");
 const handleTunag = require("./tunag");
 const handleGetWild = require("./getwild");
+const handleKintai = require("./kintai");
 
 module.exports = {
     validateVerifyToken,
@@ -48,5 +49,6 @@ module.exports = {
     handleTiktok,
     handleMidtown,
     handleTunag,
-    handleGetWild
+    handleGetWild,
+    handleKintai
 };

@@ -26,7 +26,8 @@ const {
     handleTiktok,
     handleMidtown,
     handleTunag,
-    handleGetWild
+    handleGetWild,
+    handleKintai
 } = require('./src');
 
 const app = express();
@@ -106,6 +107,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/getwild':
         handleGetWild(channel_id);
+        break;
+    case '/kintai':
+        handleKintai(channel_id);
         break;
     }
     return res.status(200).send('running...');
