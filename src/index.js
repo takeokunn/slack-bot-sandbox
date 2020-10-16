@@ -24,6 +24,7 @@ const handleMidtown = require("./midtown");
 const handleTunag = require("./tunag");
 const handleGetWild = require("./getwild");
 const handleKintai = require("./kintai");
+const handleKintaiYaburi = require("./kintai_yaburi");
 
 module.exports = {
     validateVerifyToken,
@@ -50,5 +51,6 @@ module.exports = {
     handleMidtown,
     handleTunag,
     handleGetWild,
-    handleKintai
+    handleKintai,
+    handleKintaiYaburi
 };
