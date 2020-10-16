@@ -113,7 +113,7 @@ app.post('/webhook', async (req, res) => {
         handleKintai(channel_id);
         break;
     case '/kintai_yaburi':
-        handleKintaiYaburi(channel_id);
+        handleKintaiYaburi(channel_id, text);
         break;
     }
     return res.status(200).send('running...');
