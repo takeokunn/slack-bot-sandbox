@@ -2,13 +2,13 @@ const { postMessage } = require('./utils');
 
 const kintai_yaburi = iiwake => {
     return `
-${iiwake}ため、緊急リリース致します。
+${iiwake}ため、急遽お休み頂きます。
 しょうがないんです、中橋さん。
-`
+`;
 };
 
 const handleKintaiYaburi = async (channel_id, text) => {
-    const iiwake = text || "母が急病の";
+    const iiwake = text || "お腹が空いた";
     postMessage(channel_id, kintai_yaburi(iiwake));
 };
 
