@@ -29,6 +29,7 @@ const {
     handleGetWild,
     handleKintai,
     handleKintaiYaburi,
+    handleSkylark
 } = require('./src');
 
 const app = express();
@@ -114,6 +115,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/kintai_yaburi':
         handleKintaiYaburi(channel_id, text);
+        break;
+    case '/skylark':
+        handleSkylark(channel_id);
         break;
     }
     return res.status(200).send('running...');
