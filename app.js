@@ -116,8 +116,14 @@ app.post('/webhook', async (req, res) => {
     case '/kintai_yaburi':
         handleKintaiYaburi(channel_id, text);
         break;
-    case '/skylark':
-        handleSkylark(channel_id);
+    case '/gusto':
+        handleSkylark.gusto(channel_id);
+        break;
+    case '/bamiyan':
+        handleSkylark.bamiyan(channel_id);
+        break;
+    case '/jonathan':
+        handleSkylark.jonathan(channel_id);
         break;
     }
     return res.status(200).send('running...');
