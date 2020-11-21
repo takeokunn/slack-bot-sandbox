@@ -3,17 +3,17 @@ const { postMessage } = require('./utils');
 
 const URL = "https://app-data.skylark-app.net/coupon/normals.json";
 
-const brand  = {
+const brands  = {
     gusto: {
-        id: 1,
+        id: "1",
         name: "ガスト"
     },
     bamiyan: {
-        id: 2,
+        id: "2",
         name: "バーミヤン"
     },
     jonathan: {
-        id: 3,
+        id: "3",
         name: "ジョナサン"
     }
 };
@@ -35,28 +35,32 @@ const handleRequest = async (brand, cb) => {
     try {
         const res = await axios.get(URL);
         const msg = await filterUniqueArrayById(res.data)
-              .filter((item) => item.bland_id === brand.id)
+              .filter((item) => item.brand_id === brand.id)
               .sort(sort_fn)
               .reduce(reduce_fn, "");
         cb(msg);
-
     } catch (error) {
         console.log(error);
     }
 };
 
-const handleSkylark = async (brand) => (channel_id) => {
-    const cb = (msg) => postMessage(channel_id, `\`\`\`
+const main = async (brand, channel_id) => {
+    const cb = (msg) => {
+        console.log(msg);
+        postMessage(channel_id, `\`\`\`
 本日の${brand.name}クーポン情報
 --------------------------------------------
 ${msg}
 \`\`\``);
+    };
 
     handleRequest(brand, cb);
 };
 
-module.exports = {
-    gusto: handleSkylark(brand .gusto),
-    bamiyan: handleSkylark(brand .bamiyan),
-    jonathan: handleSkylark(brand .jonathan),
+const handleSkylark = {
+    gusto: (channel_id) => main(brands.gusto, channel_id),
+    bamiyan: (channel_id) => main(brands.bamiyan, channel_id),
+    jonathan: (channel_id) => main(brands.jonathan, channel_id)
 };
+
+module.exports = handleSkylark;
