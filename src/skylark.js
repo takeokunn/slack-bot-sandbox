@@ -28,7 +28,7 @@ const handleRequest = async (success) => {
 };
 
 const handleSkylark = async (channel_id) => {
-    handleRequest(msg => postMessage(channel_id, msg));
+    handleRequest((msg) => postMessage(channel_id, `\`\`\`${msg}\`\`\``));
 };
 
 module.exports = handleSkylark;
