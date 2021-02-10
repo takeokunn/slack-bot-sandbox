@@ -26,6 +26,7 @@ const handleGetWild = require("./getwild");
 const handleKintai = require("./kintai");
 const handleKintaiYaburi = require("./kintai_yaburi");
 const handleSkylark = require("./skylark");
+const handleWeeklyDocument = require("./weekly_document");
 
 module.exports = {
     validateVerifyToken,
@@ -54,5 +55,6 @@ module.exports = {
     handleGetWild,
     handleKintai,
     handleKintaiYaburi,
-    handleSkylark
+    handleSkylark,
+    handleWeeklyDocument
 };

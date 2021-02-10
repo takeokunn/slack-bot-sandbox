@@ -29,7 +29,8 @@ const {
     handleGetWild,
     handleKintai,
     handleKintaiYaburi,
-    handleSkylark
+    handleSkylark,
+    handleWeeklyDocument
 } = require('./src');
 
 const app = express();
@@ -124,6 +125,9 @@ app.post('/webhook', async (req, res) => {
         break;
     case '/jonathan':
         handleSkylark.jonathan(channel_id);
+        break;
+    case '/weekly_document':
+        handleWeeklyDocument(channel_id);
         break;
     }
     return res.status(200).send('running...');

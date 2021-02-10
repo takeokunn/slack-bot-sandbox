@@ -5,7 +5,7 @@ const okite_yaburi = iiwake => {
     return `
 ${iiwake}ため、緊急リリース致します。
 しょうがないんです、中橋さん。
-`
+`;
 };
 
 const handleOkiteYaburi = async (channel_id, text) => {
